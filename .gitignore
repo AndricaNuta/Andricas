@@ -154,7 +154,8 @@ __generated__
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -335,3 +336,26 @@ buck-out/
 .fakebuckversion
 
 # End of https://www.toptal.com/developers/gitignore/api/node,reactnative
+
+# Node / RN
+node_modules/
+.expo/
+dist/
+build/
+
+# iOS
+ios/Pods/
+ios/DerivedData/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdatad
+ios/.xcode.env.local
+
+# Android
+android/.gradle/
+android/app/build/
+*.iml
+
+# Env
+.env
+.env.*
