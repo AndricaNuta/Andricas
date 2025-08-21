@@ -8,6 +8,8 @@ import type { HomeStackParamList } from '../../types/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { setEvents } from '../../redux/slices/eventsSlice';
+import Filters from '../../components/Filters';
+import { selectFilteredEvents } from '../../redux/selectors/filterEvents';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
@@ -15,7 +17,8 @@ export default function HomeScreen({ navigation }: Props) {
   const [q, setQ] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const events = useSelector((state: RootState) => state.events.items);
+  //const events = useSelector((state: RootState) => state.events.items);
+  const events = useSelector(selectFilteredEvents);
 
   useEffect(() => {
     dispatch(setEvents(mockEvents));
@@ -37,6 +40,7 @@ export default function HomeScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{alignSelf:'flex-end'}}onPress={()=>{navigation.navigate('Profile')}}> Profile </Text>
+      <Text style={{alignSelf:'flex-end'}}onPress={()=>{navigation.navigate('Settings')}}> Settings </Text>
       <Text
         style={{ color: '#007AFF', marginBottom: 12, fontWeight: '600' }}
         onPress={() => navigation.navigate('CreateEvent')}
@@ -51,6 +55,7 @@ export default function HomeScreen({ navigation }: Props) {
         style={styles.search}
         returnKeyType="search"
       />
+       <Filters />
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
