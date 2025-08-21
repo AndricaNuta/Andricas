@@ -5,6 +5,7 @@ import EventDetailsScreen from '../screens/EventDetailsScreen';
 import type { HomeStackParamList } from '../types/navigation';
 import ProfileScreen from '../screens/ProfileScreen';
 import CreateEventScreen from '../screens/CreateEventScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -15,6 +16,7 @@ export default function HomeStack() {
       <Stack.Screen name="EventDetails" component={EventDetailsScreen} options={{ title: 'Details' }} />
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Details' }} />
       <Stack.Screen name="CreateEvent" component={CreateEventScreen} options={{ title: 'Create Event' }} />
+      <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'SettingsScreen' }} />
     </Stack.Navigator>
   );
 }

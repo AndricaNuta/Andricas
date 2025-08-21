@@ -1,0 +1,10 @@
+{
+    "home": {
+      "title": "Acasă",
+      "welcome": "Bun venit, {{name}}!"
+    },
+    "settings": {
+      "darkMode": "Mod întunecat",
+      "language": "Limba"
+    }
+  }

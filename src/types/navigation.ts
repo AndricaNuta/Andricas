@@ -4,6 +4,7 @@ export type HomeStackParamList = {
     Profile: undefined;
     EventDetails: { id: string };  
     CreateEvent: undefined;  
+    Settings: undefined;
   };
 
   export type OnboardingStackParamList = {

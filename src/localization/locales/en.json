@@ -1,0 +1,10 @@
+{
+    "home": {
+      "title": "Home",
+      "welcome": "Welcome, {{name}}!"
+    },
+    "settings": {
+      "darkMode": "Dark Mode",
+      "language": "Language"
+    }
+  }

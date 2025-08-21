@@ -4,6 +4,7 @@ import userReducer from './slices/userSlice';
 import authReducer from './slices/authSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import filterReducer from './slices/filterSlice';
+import settingsReducer from './slices/settingsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     user: userReducer,
     auth: authReducer,
     filters: filterReducer,
+    settings: settingsReducer,
   },
 });
 
