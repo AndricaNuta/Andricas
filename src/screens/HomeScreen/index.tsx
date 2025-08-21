@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useCallback, useEffect } from 'react';
-import { View, TextInput, FlatList, RefreshControl, StyleSheet, Text } from 'react-native';
+import { View, TextInput, FlatList, RefreshControl, StyleSheet, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { mockEvents } from '../../data/mockEvents';
 import EventCard from '../../components/EventCard';
@@ -36,6 +36,13 @@ export default function HomeScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={{alignSelf:'flex-end'}}onPress={()=>{navigation.navigate('Profile')}}> Profile </Text>
+      <Text
+        style={{ color: '#007AFF', marginBottom: 12, fontWeight: '600' }}
+        onPress={() => navigation.navigate('CreateEvent')}
+      >
+        + Create Event
+      </Text>
       <Text style={styles.header}>Discover Events</Text>
       <TextInput
         value={q}
