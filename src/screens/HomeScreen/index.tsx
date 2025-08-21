@@ -1,22 +1,33 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { View, TextInput, FlatList, RefreshControl, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { mockEvents } from '../../data/mockEvents';
 import EventCard from '../../components/EventCard';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { HomeStackParamList } from '../../types/navigation';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../redux/store';
+import { setEvents } from '../../redux/slices/eventsSlice';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props) {
   const [q, setQ] = useState('');
   const [refreshing, setRefreshing] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const events = useSelector((state: RootState) => state.events.items);
 
+  useEffect(() => {
+    dispatch(setEvents(mockEvents));
+  }, [dispatch]);
+  
   const data = useMemo(() => {
     const s = q.trim().toLowerCase();
-    if (!s) return mockEvents;
-    return mockEvents.filter(e => e.title.toLowerCase().includes(s) || e.city.toLowerCase().includes(s));
-  }, [q]);
+    if (!s) return events;
+    return events.filter(
+      e => e.title.toLowerCase().includes(s) || e.city.toLowerCase().includes(s)
+    );
+  }, [q, events]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
