@@ -8,9 +8,9 @@ const Stack = createNativeStackNavigator<OnboardingStackParamList>();
 
 export default function OnboardingStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Events' }} />
-      <Stack.Screen name="Register" component={RegisterScreeen} options={{ title: 'Details' }} />
+    <Stack.Navigator screenOptions={{ headerShown: false}}>
+      <Stack.Screen name="Login" component={LoginScreen}  />
+      <Stack.Screen name="Register" component={RegisterScreeen} options ={{  animation: 'none'}}/>
     </Stack.Navigator>
   );
 }
